@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Gender</title>
+</head>
+<body>
+    <p>Welcome! Let's find out the gender of your name</p>
+
+    <form action="/submit" method="POST">
+        <label for="name">Enter name: </label>
+        <input type="text" name="name" required>
+        <br/><br/>
+
+        <label for="country">Enter country(optional): </label>
+        <input type="text" name="country" placeholder="e.g. US, IN, GB">
+
+        <br/><br/>
+        <button type="submit">Search</button>
+    </form>
+
+    <% if (locals.content) { %>
+      <%= content %>
+    <% } %>
+</body>
+</html>
