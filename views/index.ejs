@@ -30,8 +30,10 @@
             </div>
         <% } %>
 
-        <% if (error) { %>
-               <div class="result error"><%= error %></div>
+        <% if (locals.error) { %>
+            <div class="result error">
+                <p><%= error %></p>
+            </div>
         <% } %>
            
     </div>

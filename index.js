@@ -44,6 +44,7 @@ app.post("/submit", async(req,res)=>{
         const result = response.data;
         res.render("index.ejs",{
             content: result,
+            error: null
         });
             
     } catch (error) {
