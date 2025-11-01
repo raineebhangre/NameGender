@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <p>Welcome! Let's find out the gender of your name</p>
+        <h2>Welcome! Let's find out the gender probability of your name</h2>
 
         <form action="/submit" method="POST">
             <div class="input-group">
@@ -17,11 +17,10 @@
             </div>
 
             <div class="input-group">
-                <label for="country">Enter country(optional): </label>
-                <input type="text" name="country" placeholder="e.g. US, IN, GB">
+                <label for="country">Enter country (optional): </label>
+                <input type="text" name="country" placeholder="e.g. United States / India / France">
             </div>
 
-            <br/><br/>
             <button type="submit">Search</button>
         </form>
 
@@ -29,6 +28,10 @@
             <div class="result">
                 <p><%= content.name%> is <%= content.gender %> with chances out of 1 as <%= content.probability %></p> 
             </div>
+        <% } %>
+
+        <% if (error) { %>
+               <div class="result error"><%= error %></div>
         <% } %>
            
     </div>
