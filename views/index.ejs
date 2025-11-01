@@ -4,24 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Check Gender</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <p>Welcome! Let's find out the gender of your name</p>
+    <div class="container">
+        <p>Welcome! Let's find out the gender of your name</p>
 
-    <form action="/submit" method="POST">
-        <label for="name">Enter name: </label>
-        <input type="text" name="name" required>
-        <br/><br/>
+        <form action="/submit" method="POST">
+            <div class="input-group">
+                <label for="name">Enter name: </label>
+                <input type="text" name="name" required>
+            </div>
 
-        <label for="country">Enter country(optional): </label>
-        <input type="text" name="country" placeholder="e.g. US, IN, GB">
+            <div class="input-group">
+                <label for="country">Enter country(optional): </label>
+                <input type="text" name="country" placeholder="e.g. US, IN, GB">
+            </div>
 
-        <br/><br/>
-        <button type="submit">Search</button>
-    </form>
+            <br/><br/>
+            <button type="submit">Search</button>
+        </form>
 
-    <% if (locals.content) { %>
-      <p><%= content.name%> is <%= content.gender %> with chances out of 1 as <%= content.probability %></p> 
-    <% } %>
+        <% if (locals.content) { %>
+            <div class="result">
+                <p><%= content.name%> is <%= content.gender %> with chances out of 1 as <%= content.probability %></p> 
+            </div>
+        <% } %>
+           
+    </div>
 </body>
 </html>

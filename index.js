@@ -7,6 +7,7 @@ const app=express();
 const port=3000;
 
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static("public"));
 
 const API_URL="https://api.genderize.io";
 
