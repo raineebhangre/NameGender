@@ -1,6 +1,7 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from 'body-parser';
+import { countries } from './countries.js';
 
 const app=express();
 const port=3000;
@@ -15,15 +16,33 @@ app.get("/",(req,res)=>{
 });
 
 app.post("/submit", async(req,res)=>{
-    
     const name=req.body.name;
-    const country=req.body.country;
+    const country=req.body.country.trim();
     
+    let countryObj=null;
+
+    if(country){
+         countryObj= countries.find(
+            (c) => c.name.toLowerCase() === country.toLowerCase()
+         );
+
+        if (!countryObj) {
+            return res.render("index.ejs", {
+                error: `Data not available for "${country}"`,
+                content: null,
+            });
+    }}
+
     try {
-        const response=await axios.get(API_URL + `?name=${name}&country_id=${country}`);
-        const result=response.data;
+        let url = `${API_URL}?name=${name}`;
+        if (countryObj) {
+           url += `&country_id=${countryObj.code}`;
+        }
+
+        const response = await axios.get(url);
+        const result = response.data;
         res.render("index.ejs",{
-            content: `Name: ${result.name}, Gender: ${result.gender}, Probability: ${result.probability}`,
+            content: result,
         });
             
     } catch (error) {
